@@ -89,3 +89,63 @@ button:hover {
   width: 100%;
   box-sizing: border-box;
 }
+
+/* ===== 新增Chat按钮样式 ===== */
+.chat-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin: 2px 0;
+  transition: all 0.2s;
+}
+
+.chat-button:hover {
+  background-color: #218838;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ===== 新增聊天对话框样式 ===== */
+.chat-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.chat-container {
+  background-color: white;
+  width: 450px;
+  max-height: 70vh;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #6c757d;
+}
+
+/* ===== 响应式调整 ===== */
+@media (max-width: 576px) {
+  .chat-container {
+    width: 90%;
+    max-height: 80vh;
+  }
+}

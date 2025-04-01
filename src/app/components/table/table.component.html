@@ -34,10 +34,23 @@
             <button (click)="editUser(item)">Modificar</button>
           </div>
         </ng-container>
+
+        <ng-container *ngIf="column.key === 'chat'">
+          <button class="chat-button" (click)="openChat(item._id)">Chat</button>
+        </ng-container>
+
       </td>
     </tr>
   </tbody>
 </table>
+
+<div *ngIf="showChatDialog" class="chat-overlay">
+  <div class="chat-container">
+    <button class="close-button" (click)="closeChat()">×</button>
+    <app-chat-dialog [targetUserId]="selectedUserId"></app-chat-dialog>
+  </div>
+</div>
+
 
 <div class="pagination-controls">
   <label for="rowsPerPage">Rows per page:</label>

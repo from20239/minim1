@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
     { key: 'phone', label: 'Phone' },
     { key: 'password', label: 'Password' },
     { key: 'wallet', label: 'Wallet' },
-    { key: 'flag', label: 'Flag' }
+    { key: 'flag', label: 'Flag' },
+    { key: 'chat', label: 'Chat' }
   ];
 
   constructor(private apiService: ApiService, private cdRef: ChangeDetectorRef) {}

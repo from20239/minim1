@@ -66,4 +66,20 @@ export class ApiService {
   searchUsers(criteria: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/search-users`, criteria);
   }
+
+// 显式声明 sendMessage
+sendMessage(message: any): Observable<any> {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.post(`${this.apiUrl}/messages`, message, { headers });
+}
+
+// 显式声明 getConversation
+getConversation(user1: string, user2: string): Observable<any> {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.http.get(`${this.apiUrl}/messages/${user1}/${user2}`, { headers });
+}
+
+  
 }

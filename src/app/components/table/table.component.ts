@@ -6,17 +6,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { TableFilterPipe } from '../../pipes/table-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { ChatDialogComponent } from '../chat-dialog/chat-dialog.component';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ChatDialogComponent],
+
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
 export class TableComponent {
 
   searchText: string = ''; // Texto de búsqueda
+
+    showChatDialog = false;
+    selectedUserId: string = ''; 
 
   openCreateUserModal() {
     this.dialog.open(CreateUserComponent, {
@@ -48,6 +53,19 @@ export class TableComponent {
   sortDirection: 'asc' | 'desc' = 'asc';
   totalPages: number = 0;
 
+
+    // 新增聊天方法
+    openChat(userId: string) {
+      this.dialog.open(ChatDialogComponent, {
+        width: '500px',
+        data: { targetUserId: userId }
+      });
+    }
+
+    closeChat() {
+      this.showChatDialog = false;
+    }
+  
   get sortedData() {
   if (!this.sortColumn || this.sortColumn === 'num') {
     return this.data;
@@ -67,6 +85,10 @@ export class TableComponent {
     }
     return 0;
   });
+
+
+
+
 }
 
 getUsers(page: number, limit: number) {
